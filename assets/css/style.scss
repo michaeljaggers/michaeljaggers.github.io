@@ -3,9 +3,11 @@
 
 @import "{{ site.theme }}";
 a { color: #535d91; }
+a:hover { color: #535d91; text-decoration: dotted; }
 h1 { text-align: center; }
 h1 a.site-title { color: #222; text-align: center; }
 .site-logo { display: block; width: 200px; margin: 0 auto; }
 .site-description { text-align: center; }
 .view { text-align: center; }
+.view a:hover { text-decoration: none; }
 section { margin-top: 60px; }
