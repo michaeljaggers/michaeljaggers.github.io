@@ -2,3 +2,7 @@
  ---
 
 @import "{{ site.theme }}";
+
+a { color: #535d91; }
+
+header h1 a { color: #222; }
