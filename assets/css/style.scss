@@ -3,4 +3,7 @@
 
 @import "{{ site.theme }}";
 a { color: #535d91; }
-header h1 a { color: #222; }
+h1 a.site-title { color: #222; }
+.site-logo { display: block; width: 200px; margin: 0 auto; }
+.site-description { text-align: center; }
+.view { text-align: center; }
