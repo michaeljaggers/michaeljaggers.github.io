@@ -1,4 +1,4 @@
-# Development from Michael Jaggers
+### Development Projects
 
 * [Rock, Paper, Scissors](/rock-paper-scissors/index.html)
 * [Budget App](/budget-app/index.html)
