@@ -8,6 +8,8 @@ window.addEventListener('load', () => {
   let temperatureSpan = document.querySelector('.temperature span');
   
   if(navigator.geolocation) {
+    
+    //Get user lat/long cooirdinates
     navigator.geolocation.getCurrentPosition(position => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
@@ -20,13 +22,17 @@ window.addEventListener('load', () => {
         return response.json();
       })
       .then(data => {
+        
         const { temperature, summary, icon } = data.currently;
+        
         //Set DOM elements from the API
         temperatureDegree.textContent = Math.floor(temperature);
         temperatureDescription.textContent = summary;
         locationTimezone.textContent = data.timezone;
-          //Formula for Celsius
+          
+        //Formula for Celsius
           let celcius = (temperature - 32) * (5 / 9);
+          
           //Set icon
           setIcons(icon, document.querySelector(".icon"));
           
@@ -38,7 +44,6 @@ window.addEventListener('load', () => {
             } else {
               temperatureSpan.textContent = "F";
               temperatureDegree.textContent = Math.floor(temperature);
-              
             }
           });
       });
@@ -51,4 +56,5 @@ window.addEventListener('load', () => {
     skycons.play();
     return skycons.set(iconID, Skycons[currentIcon]);
   }
+  
 });
