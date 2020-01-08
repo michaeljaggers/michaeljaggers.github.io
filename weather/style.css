@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.hide {
+  display: none;
+}
+
 body {
   height: 100vh;
   display: flex;
@@ -28,6 +32,10 @@ body {
   flex-direction: column;
 }
 
+.location-timezone {
+  margin-right: 40px;
+}
+
 .degree-section {
   display: flex;
   align-items: center;
@@ -43,8 +51,12 @@ body {
   font-size: 40px;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 450px) {
   .location {
     flex-direction: column;
+  }
+  
+  .location-timezone {
+    margin-right: 0;
   }
 }

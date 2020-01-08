@@ -36,6 +36,9 @@ window.addEventListener('load', () => {
           //Set icon
           setIcons(icon, document.querySelector(".icon"));
           
+          //Show icon
+          document.querySelector('.location .icon').className = 'icon';
+          
           //Change temperature to Celsius/Farenheight
           temperatureSection.addEventListener('click', () => {
             if(temperatureSpan.textContent === "F") {
