@@ -8,3 +8,4 @@
 ### [Image Guess](/image-guess/index.html)
 ### [JS Drum Kit](/js-drum-kit/index.html)
 ### [Doggos](/doggos/index.html)
+### [Weather](/weather/index.html)
