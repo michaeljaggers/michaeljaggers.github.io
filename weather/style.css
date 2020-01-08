@@ -42,3 +42,9 @@ body {
 .degree-section h2 {
   font-size: 40px;
 }
+
+@media screen and (max-width: 425px) {
+  .location {
+    flex-direction: column;
+  }
+}
