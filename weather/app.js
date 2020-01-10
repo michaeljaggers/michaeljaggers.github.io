@@ -26,7 +26,6 @@ window.addEventListener('load', () => {
           return mapsResponse.json();
         })
         .then(mapsData => {
-          console.log(mapsData);
 
           const { long_name } = mapsData.results[0].address_components[3];
           const { short_name } = mapsData.results[0].address_components[5];
