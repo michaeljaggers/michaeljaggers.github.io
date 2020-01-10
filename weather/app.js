@@ -14,9 +14,27 @@ window.addEventListener('load', () => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
       
+      const mapsApiKey = 'AIzaSyC5F_0mFT0p5ghk9q34dOe8NlpIcurTJd0';
       const proxy = 'https://cors-anywhere.herokuapp.com/';
       const api = `${proxy}https://api.darksky.net/forecast/3f92d2cdc9874209ce9f199eaeab5524/${lat},${long}`;
+      const mapsApi = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${mapsApiKey}`;
+      let location;
       
+      //Fetch reverse geocoordinates from Google Maps
+      fetch(mapsApi)
+        .then(mapsResponse => {
+          return mapsResponse.json();
+        })
+        .then(mapsData => {
+          console.log(mapsData);
+
+          const { long_name } = mapsData.results[0].address_components[3];
+          const { short_name } = mapsData.results[0].address_components[5];
+          location = long_name + ", " + short_name;
+          
+        })
+
+      //Fetch weather information from DarkSky
       fetch(api)
       .then(response => {
         return response.json();
@@ -25,10 +43,11 @@ window.addEventListener('load', () => {
         
         const { temperature, summary, icon } = data.currently;
         
-        //Set DOM elements from the API
+        //Set DOM elements from the APIs
         temperatureDegree.textContent = Math.floor(temperature);
         temperatureDescription.textContent = summary;
-        locationTimezone.textContent = data.timezone;
+        locationTimezone.textContent = location;
+        
           
         //Formula for Celsius
           let celcius = (temperature - 32) * (5 / 9);
