@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
           const city = mapsData.results[0].address_components[3].short_name;
           const state = mapsData.results[0].address_components[5].short_name;
           location = city + ", " + state;
-          
+          locationUser.textContent = location;
         })
 
       //Fetch weather information from DarkSky
@@ -46,7 +46,7 @@ window.addEventListener('load', () => {
         //Set DOM elements from the APIs
         temperatureDegree.textContent = Math.round(temperature);
         temperatureDescription.textContent = summary;
-        locationUser.textContent = location;
+        
         
           
         //Formula for Celsius
@@ -59,6 +59,7 @@ window.addEventListener('load', () => {
           document.querySelector('.location .icon').className = 'icon';
           temperatureDegree.className = 'temperature-degree';
           temperatureSpan.className = '';
+          locationUser.className = 'location-user';
           
           //Change temperature to Celsius/Farenheight
           temperatureSection.addEventListener('click', () => {
