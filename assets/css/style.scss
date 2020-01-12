@@ -1,18 +1,64 @@
----
----
-
 @import "{{ site.theme }}";
-a { color: #535d91; }
-a:hover { color: #535d91; text-decoration: underline; }
-h1 { text-align: center; }
-h1 a.site-title { color: #222; text-align: center; text-transform: uppercase; font-size: 26px; }
-h1 a.site-title:hover { text-decoration: none; }
-.site-logo { display: block; width: 200px; margin: 0 auto; }
-.site-description { text-align: center; }
-.view { text-align: center; }
-.view a:hover { text-decoration: none; }
-section { margin-top: 40px; }
-#development-projects { display: none; }
-#rock-paper-scissors { margin-top: 30px; }
-h3 { margin: 0 0 30px; text-align: center; }
-@media print, screen and (max-width: 960px) { header { padding-right: 0; } }
+
+a { 
+  color: #535d91;
+  &:hover {
+    color: #535d91;
+    text-decoration: underline;
+  }
+}
+
+
+h1 { 
+  text-align: center;
+  .site-title {
+    color: #222;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 26px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.site-logo { 
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.site-description {
+  text-align: center;
+}
+
+.view { 
+  text-align: center;
+}
+
+.view a:hover { 
+  text-decoration: none;
+}
+
+section {
+  margin-top: 40px;
+}
+
+#development-projects { 
+  display: none;
+}
+
+#rock-paper-scissors { 
+  margin-top: 30px;
+}
+
+h3 { 
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+@media print, screen and (max-width: 960px) {
+  header { 
+    padding-right: 0;
+  }
+}
