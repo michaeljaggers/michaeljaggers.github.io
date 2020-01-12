@@ -22,18 +22,19 @@ body {
 .location,
 .temperature {
   height: 30vh;
-  width: 50%;
+  width: 80%;
+  max-width: 500px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.temperature {
-  flex-direction: column;
+.location-user {
+  margin-right: 40px;
 }
 
-.location-timezone {
-  margin-right: 40px;
+.temperature {
+  flex-direction: column;
 }
 
 .degree-section {
@@ -42,13 +43,21 @@ body {
   cursor: pointer;
 }
 
-.degree-section span {
-  margin: 10px;
-  font-size: 30px;
+.degree-section h2 {
+  font-size: 70px;
 }
 
-.degree-section h2 {
-  font-size: 40px;
+.degree-section h2::after {
+  content: "°";
+}
+
+.degree-section span {
+  margin: 10px;
+  font-size: 50px;
+}
+
+.temperature-description {
+  font-size: 20px;
 }
 
 @media screen and (max-width: 450px) {
@@ -56,7 +65,7 @@ body {
     flex-direction: column;
   }
   
-  .location-timezone {
+  .location-user {
     margin-right: 0;
   }
 }

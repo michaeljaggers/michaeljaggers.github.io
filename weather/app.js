@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
   let lat;
   let temperatureDescription = document.querySelector('.temperature-description');
   let temperatureDegree = document.querySelector('.temperature-degree');
-  let locationTimezone = document.querySelector('.location-timezone');
+  let locationUser = document.querySelector('.location-user');
   let temperatureSection = document.querySelector('.temperature');
   let temperatureSpan = document.querySelector('.temperature span');
   
@@ -26,10 +26,11 @@ window.addEventListener('load', () => {
           return mapsResponse.json();
         })
         .then(mapsData => {
-
-          const { long_name } = mapsData.results[0].address_components[3];
-          const { short_name } = mapsData.results[0].address_components[5];
-          location = long_name + ", " + short_name;
+          
+          console.log(mapsData);
+          const city = mapsData.results[0].address_components[3].short_name;
+          const state = mapsData.results[0].address_components[5].short_name;
+          location = city + ", " + state;
           
         })
 
@@ -43,9 +44,9 @@ window.addEventListener('load', () => {
         const { temperature, summary, icon } = data.currently;
         
         //Set DOM elements from the APIs
-        temperatureDegree.textContent = Math.floor(temperature);
+        temperatureDegree.textContent = Math.round(temperature);
         temperatureDescription.textContent = summary;
-        locationTimezone.textContent = location;
+        locationUser.textContent = location;
         
           
         //Formula for Celsius
@@ -54,17 +55,19 @@ window.addEventListener('load', () => {
           //Set icon
           setIcons(icon, document.querySelector(".icon"));
           
-          //Show icon
+          //Show information
           document.querySelector('.location .icon').className = 'icon';
+          temperatureDegree.className = 'temperature-degree';
+          temperatureSpan.className = '';
           
           //Change temperature to Celsius/Farenheight
           temperatureSection.addEventListener('click', () => {
             if(temperatureSpan.textContent === "F") {
               temperatureSpan.textContent = "C";
-              temperatureDegree.textContent = Math.floor(celcius);
+              temperatureDegree.textContent = Math.round(celcius);
             } else {
               temperatureSpan.textContent = "F";
-              temperatureDegree.textContent = Math.floor(temperature);
+              temperatureDegree.textContent = Math.round(temperature);
             }
           });
       });
