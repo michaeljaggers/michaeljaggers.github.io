@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
         .then(mapsData => {
           
           console.log(mapsData);
-          const city = mapsData.results[0].address_components[3].short_name;
+          const city = mapsData.results[0].address_components[2].short_name;
           const state = mapsData.results[0].address_components[5].short_name;
           location = city + ", " + state;
           locationUser.textContent = location;
@@ -40,7 +40,7 @@ window.addEventListener('load', () => {
         return response.json();
       })
       .then(data => {
-        
+        console.log(data);
         const { temperature, summary, icon } = data.currently;
         
         //Set DOM elements from the APIs
