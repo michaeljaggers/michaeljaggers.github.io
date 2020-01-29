@@ -61,6 +61,33 @@ body {
   font-size: 20px;
 }
 
+.forecast-section {
+  display: flex;
+  justify-content: space-around;
+  max-width: 500px;
+
+}
+
+.forecast-section > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100px;
+  height: 200px;
+}
+
+.forecast-section .icon {
+  align-self: center;
+  height: 50px;
+  width: 50px;
+}
+
+.degree-section-high,
+.degree-section-low {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 450px) {
   .location {
     flex-direction: column;
