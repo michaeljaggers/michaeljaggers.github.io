@@ -62,11 +62,18 @@ window.addEventListener('load', () => {
       .then(data => {
         console.log(data);
         const { temperature, summary, icon } = data.currently;
-        const weekdayToday = new Date(data.daily.data[0].time).toString().substring(0, 3);
-        const weekdayTodayPlus1 = new Date(data.daily.data[1].time).toString().substring(0, 3);
-        const weekdayTodayPlus2 = new Date(data.daily.data[2].time).toString().substring(0, 3);
-        const weekdayTodayPlus3 = new Date(data.daily.data[3].time).toString().substring(0, 3);
-        const weekdayTodayPlus4 = new Date(data.daily.data[4].time).toString().substring(0, 3)
+        const calcDate = (timestamp, increment) => {
+          // multiply days by one day's worth of milliseconds
+          const incrementer = increment * 86400000;
+
+          return new Date((timestamp + incrementer)).toString().substring(0, 3);
+        }
+        const todayTimestamp = data.daily.data[0].time * 10000;
+        const weekdayToday = calcDate(todayTimestamp, 0);
+        const weekdayTodayPlus1 = calcDate(todayTimestamp, 1);
+        const weekdayTodayPlus2 = calcDate(todayTimestamp, 2);
+        const weekdayTodayPlus3 = calcDate(todayTimestamp, 3);
+        const weekdayTodayPlus4 = calcDate(todayTimestamp, 4);
         const weekdayTodayIcon = data.daily.data[0].icon;
         const weekdayTodayPlus1Icon = data.daily.data[1].icon;
         const weekdayTodayPlus2Icon = data.daily.data[2].icon;
