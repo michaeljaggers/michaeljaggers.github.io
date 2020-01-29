@@ -9,6 +9,7 @@ window.addEventListener('load', () => {
   let temperatureSpan = document.querySelector('.temperature span');
 
   //Forecast Elements
+  let forecastSection = document.querySelector('.forecast-section');
   let forecastTodayWeekday = document.querySelector('.forecast-section .today .weekday');
   let forecastTodayWeekdayPlus1 = document.querySelector('.forecast-section .todayPlus1 .weekday');
   let forecastTodayWeekdayPlus2 = document.querySelector('.forecast-section .todayPlus2 .weekday');
@@ -118,6 +119,8 @@ window.addEventListener('load', () => {
           temperatureDegree.className = 'temperature-degree';
           temperatureSpan.className = '';
           locationUser.className = 'location-user';
+          forecastSection.className = 'forecast-section';
+          
           
           //Change temperature to Celsius/Farenheight
           temperatureSection.addEventListener('click', () => {
