@@ -66,7 +66,7 @@ window.addEventListener('load', () => {
           // multiply days by one day's worth of milliseconds
           const incrementer = increment * 86400000;
 
-          return new Date((timestamp + incrementer)).toString().substring(0, 3);
+          return new Date(timestamp + incrementer).toString().substring(0, 3);
         }
         const todayTimestamp = data.daily.data[0].time * 10000;
         const weekdayToday = calcDate(todayTimestamp, 0);
