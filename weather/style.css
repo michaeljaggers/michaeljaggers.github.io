@@ -76,6 +76,10 @@ body {
   height: 200px;
 }
 
+.forecast-section .weekday {
+  text-align: center;
+}
+
 .forecast-section .icon {
   align-self: center;
   height: 50px;
@@ -86,6 +90,11 @@ body {
 .degree-section-low {
   display: flex;
   justify-content: center;
+}
+
+.forecast-temp-high:after,
+.forecast-temp-low:after {
+  content: "°";
 }
 
 @media screen and (max-width: 450px) {

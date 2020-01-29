@@ -17,6 +17,14 @@ window.addEventListener('load', () => {
 
   let forecastTodayHigh = document.querySelector('.forecast-section .today .forecast-temp-high');
   let forecastTodayLow = document.querySelector('.forecast-section .today .forecast-temp-low');
+  let forecastTodayPlus1High = document.querySelector('.forecast-section .todayPlus1 .forecast-temp-high');
+  let forecastTodayPlus1Low = document.querySelector('.forecast-section .todayPlus1 .forecast-temp-low');
+  let forecastTodayPlus2High = document.querySelector('.forecast-section .todayPlus2 .forecast-temp-high');
+  let forecastTodayPlus2Low = document.querySelector('.forecast-section .todayPlus2 .forecast-temp-low');
+  let forecastTodayPlus3High = document.querySelector('.forecast-section .todayPlus3 .forecast-temp-high');
+  let forecastTodayPlus3Low = document.querySelector('.forecast-section .todayPlus3 .forecast-temp-low');
+  let forecastTodayPlus4High = document.querySelector('.forecast-section .todayPlus4 .forecast-temp-high');
+  let forecastTodayPlus4Low = document.querySelector('.forecast-section .todayPlus4 .forecast-temp-low');
   
   if(navigator.geolocation) {
     
@@ -53,18 +61,27 @@ window.addEventListener('load', () => {
       .then(data => {
         console.log(data);
         const { temperature, summary, icon } = data.currently;
-        const weekdayToday = data.daily.data[0].time;
-        const weekdayTodayPlus1 = data.daily.data[1].time;
-        const weekdayTodayPlus2 = data.daily.data[2].time;
-        const weekdayTodayPlus3 = data.daily.data[3].time;
-        const weekdayTodayPlus4 = data.daily.data[4].time;
+        const weekdayToday = new Date(data.daily.data[0].time).toString().substring(0, 3);
+        const weekdayTodayPlus1 = new Date(data.daily.data[1].time).toString().substring(0, 3);
+        const weekdayTodayPlus2 = new Date(data.daily.data[2].time).toString().substring(0, 3);
+        const weekdayTodayPlus3 = new Date(data.daily.data[3].time).toString().substring(0, 3);
+        const weekdayTodayPlus4 = new Date(data.daily.data[4].time).toString().substring(0, 3)
         const weekdayTodayIcon = data.daily.data[0].icon;
         const weekdayTodayPlus1Icon = data.daily.data[1].icon;
         const weekdayTodayPlus2Icon = data.daily.data[2].icon;
         const weekdayTodayPlus3Icon = data.daily.data[3].icon;
         const weekdayTodayPlus4Icon = data.daily.data[4].icon;
 
-        const forecastTodayHighTemp = data.daily.data[0].temperatureMax
+        const forecastTodayHighTemp = data.daily.data[0].temperatureMax;
+        const forecastTodayLowTemp = data.daily.data[0].temperatureMin;
+        const forecastTodayPlus1HighTemp = data.daily.data[1].temperatureMax;
+        const forecastTodayPlus1LowTemp = data.daily.data[1].temperatureMin;
+        const forecastTodayPlus2HighTemp = data.daily.data[2].temperatureMax;
+        const forecastTodayPlus2LowTemp = data.daily.data[2].temperatureMin;
+        const forecastTodayPlus3HighTemp = data.daily.data[3].temperatureMax;
+        const forecastTodayPlus3LowTemp = data.daily.data[3].temperatureMin;
+        const forecastTodayPlus4HighTemp = data.daily.data[4].temperatureMax;
+        const forecastTodayPlus4LowTemp = data.daily.data[4].temperatureMin;
         
         //Set DOM elements from the APIs
         temperatureDegree.textContent = Math.round(temperature);
@@ -74,8 +91,16 @@ window.addEventListener('load', () => {
         forecastTodayWeekdayPlus2.textContent = weekdayTodayPlus2;
         forecastTodayWeekdayPlus3.textContent = weekdayTodayPlus3;
         forecastTodayWeekdayPlus4.textContent = weekdayTodayPlus4;
-        forecastTodayHigh.textContent = Math.round(forecastTodayHighTemp); 
-        
+        forecastTodayHigh.textContent = Math.round(forecastTodayHighTemp);
+        forecastTodayLow.textContent = Math.round(forecastTodayLowTemp);  
+        forecastTodayPlus1High.textContent = Math.round(forecastTodayPlus1HighTemp);
+        forecastTodayPlus1Low.textContent = Math.round(forecastTodayPlus1LowTemp);
+        forecastTodayPlus2High.textContent = Math.round(forecastTodayPlus2HighTemp);
+        forecastTodayPlus2Low.textContent = Math.round(forecastTodayPlus2LowTemp);
+        forecastTodayPlus3High.textContent = Math.round(forecastTodayPlus3HighTemp);
+        forecastTodayPlus3Low.textContent = Math.round(forecastTodayPlus3LowTemp);
+        forecastTodayPlus4High.textContent = Math.round(forecastTodayPlus4HighTemp);
+        forecastTodayPlus4Low.textContent = Math.round(forecastTodayPlus4LowTemp);
           
         //Formula for Celsius
           let celcius = (temperature - 32) * (5 / 9);
