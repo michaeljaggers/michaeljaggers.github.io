@@ -36,7 +36,7 @@ window.addEventListener('load', () => {
       
       const mapsApiKey = 'AIzaSyC5F_0mFT0p5ghk9q34dOe8NlpIcurTJd0';
       const proxy = 'https://cors-anywhere.herokuapp.com/';
-      const api = `${proxy}https://api.darksky.net/forecast/3f92d2cdc9874209ce9f199eaeab5524/${lat},${long}`;
+      const weatherApi = `${proxy}https://api.darksky.net/forecast/3f92d2cdc9874209ce9f199eaeab5524/${lat},${long}`;
       const mapsApi = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${mapsApiKey}`;
       let location;
       
@@ -47,7 +47,6 @@ window.addEventListener('load', () => {
         })
         .then(mapsData => {
           
-          console.log(mapsData);
           const city = mapsData.results[0].address_components[3].short_name;
           const state = mapsData.results[0].address_components[5].short_name;
           location = city + ", " + state;
@@ -55,25 +54,27 @@ window.addEventListener('load', () => {
         })
 
       //Fetch weather information from DarkSky
-      fetch(api)
+      fetch(weatherApi)
       .then(response => {
         return response.json();
       })
       .then(data => {
-        console.log(data);
-        const { temperature, summary, icon } = data.currently;
+
+        const { temperature, summary, icon, time } = data.currently;
+
         const calcDate = (timestamp, increment) => {
           // multiply days by one day's worth of milliseconds
           const incrementer = increment * 86400000;
 
           return new Date(timestamp + incrementer).toString().substring(0, 3);
         }
-        const todayTimestamp = data.daily.data[0].time * 10000;
+        const todayTimestamp = time * 1000;
         const weekdayToday = calcDate(todayTimestamp, 0);
         const weekdayTodayPlus1 = calcDate(todayTimestamp, 1);
         const weekdayTodayPlus2 = calcDate(todayTimestamp, 2);
         const weekdayTodayPlus3 = calcDate(todayTimestamp, 3);
         const weekdayTodayPlus4 = calcDate(todayTimestamp, 4);
+
         const weekdayTodayIcon = data.daily.data[0].icon;
         const weekdayTodayPlus1Icon = data.daily.data[1].icon;
         const weekdayTodayPlus2Icon = data.daily.data[2].icon;

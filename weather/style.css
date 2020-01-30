@@ -21,7 +21,7 @@ body {
 
 .location,
 .temperature {
-  height: 30vh;
+  height: 25vh;
   width: 80%;
   max-width: 500px;
   display: flex;
@@ -36,6 +36,7 @@ body {
 
 .temperature {
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .degree-section {
@@ -59,6 +60,7 @@ body {
 
 .temperature-description {
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .forecast-section {
@@ -92,9 +94,37 @@ body {
   justify-content: center;
 }
 
-.forecast-temp-high:after,
-.forecast-temp-low:after {
+.degree-section-high span,
+.degree-section-low span {
+  font-size: 13px;
+}
+
+.forecast-temp-high::after,
+.forecast-temp-low::after {
   content: "°";
+}
+
+.forecast-temp-high::before {
+  content: "↑";
+  padding-right: 5px;
+}
+
+.forecast-temp-low::before {
+  content: "↓";
+  padding-right: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .forecast-section {
+    flex-direction: column;
+  }
+  .forecast-section > div {
+    flex-direction: row;
+    height: 70px;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 450px) {
