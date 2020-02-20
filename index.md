@@ -9,3 +9,4 @@
 ### [JS Drum Kit](/js-drum-kit/index.html)
 ### [Doggos](/doggos/index.html)
 ### [Weather App](/weather/index.html)
+### [Etch-A-Sketch](/etch-a-sketch/index.html)
