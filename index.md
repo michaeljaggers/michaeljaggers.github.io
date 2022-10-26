@@ -10,3 +10,4 @@
 ### [Doggos](/doggos/index.html)
 ### [Etch-A-Sketch](/etch-a-sketch/index.html)
 ### [React User List](https://michaeljaggers.github.io/react-user-list)
+### [Insurance React Component](https://dev.michaeljaggers.com/insurance-react-component/)
